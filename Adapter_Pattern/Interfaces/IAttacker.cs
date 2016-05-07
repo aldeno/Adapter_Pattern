@@ -9,10 +9,10 @@ namespace Adapter_Pattern.Interfaces
     public interface IAttacker
     {
         void AssignDriver(string driverName);
-
+        int Attack(Enemy enemy);
         void DriveForward();
         void DriveBackward();
-        void DriveForward();
-        void DriveForward();
+        void DriveLeft();
+        void DriveRight();
     }
 }

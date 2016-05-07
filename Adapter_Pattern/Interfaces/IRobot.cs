@@ -8,5 +8,11 @@ namespace Adapter_Pattern.Interfaces
 {
     public interface IRobot
     {
+        void AssignMaster(string masterName);
+        void HitWithHand();
+        void WalkForward();
+        void WalkBackward();
+        void WalkLeft();
+        void WalkRight();
     }
 }
