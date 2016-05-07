@@ -9,6 +9,21 @@ namespace Adapter_Pattern
     public class Enemy
     {
         int _strength;
+        string _name;
+
+        public Enemy(string name = "Unknow", int strength = 100)
+        {
+            _name = name;
+            _strength = strength;
+        }
+
+        public int Strength
+        {
+            get
+            {
+                return _strength;
+            }
+        }
 
         public int Hit(int demageLevel)
         {

@@ -26,10 +26,18 @@ namespace Adapter_Pattern
         public bool Attack(Enemy enemy)
         {
             if (enemy == null)
+            {
+                Console.WriteLine("Enemy does not exist!");
                 return false;
+            }
             int demageLevel = new Random().Next(0, 50);
-
             enemy.Hit(demageLevel);
+
+            Console.WriteLine("----------------------------------------------------------");
+            Console.WriteLine($"Attack strength: {demageLevel}");
+            Console.WriteLine($"Enemy strength left: {enemy.Strength}");
+            Console.WriteLine("Target is " + (enemy.IsDestroyed ? "" : "not") + " destroyed!");
+            Console.WriteLine("----------------------------------------------------------");
 
             return enemy.IsDestroyed;
         }
@@ -37,21 +45,30 @@ namespace Adapter_Pattern
         public void DriveBackward()
         {
             _location.X--;
+            GetLocation();
         }
 
         public void DriveForward()
         {
             _location.X++;
+            GetLocation();
         }
 
         public void DriveLeft()
         {
             _location.Y--;
+            GetLocation();
         }
 
         public void DriveRight()
         {
-            _location.X++;
+            _location.Y++;
+            GetLocation();
+        }
+
+        public void GetLocation()
+        {
+            Console.WriteLine($"Coordinates [{_location.X},{_location.Y}]");
         }
     }
 }

@@ -24,29 +24,52 @@ namespace Adapter_Pattern
             _master = masterName;
         }
 
-        public void HitWithHand()
+        public bool HitWithHand(Enemy enemy)
         {
-            Console.WriteLine($"I have hit the enemy. Demage level is: {new Random().Next(1,50)}");
+            if (enemy == null)
+            {
+                Console.WriteLine("Enemy does not exist!");
+                return false;
+            }
+            int demageLevel = new Random().Next(0, 15);
+            enemy.Hit(demageLevel);
+
+            Console.WriteLine("----------------------------------------------------------");
+            Console.WriteLine($"Attack strength: {demageLevel}");
+            Console.WriteLine($"Enemy strength left: {enemy.Strength}");
+            Console.WriteLine("Target is " + (enemy.IsDestroyed ? "" : "not") + " destroyed!");
+            Console.WriteLine("----------------------------------------------------------");
+
+            return enemy.IsDestroyed;
         }
 
         public void WalkBackward()
         {
-            throw new NotImplementedException();
+            _location.X--;
+            GetCurrentPosition();
         }
 
         public void WalkForward()
         {
-            throw new NotImplementedException();
+            _location.X++;
+            GetCurrentPosition();
         }
 
         public void WalkLeft()
         {
-            throw new NotImplementedException();
+            _location.Y--;
+            GetCurrentPosition();
         }
 
         public void WalkRight()
         {
-            throw new NotImplementedException();
+            _location.Y++;
+            GetCurrentPosition();
+        }
+
+        public void GetCurrentPosition()
+        {
+            Console.WriteLine($"Coordinates [{_location.X},{_location.Y}]");
         }
     }
 }
